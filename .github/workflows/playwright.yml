@@ -7,6 +7,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v3
-      - name: Say hello
-        run: echo "Hello"
+        uses: actions/checkout@v2
+      - name: Run tests
+        run: |
+          echo "Start the shopping store application"
+          chmod +x ./shopping-store-linux-amd64 &
+          echo "Install dependencies from lockfile"
+          npm ci
+          echo "Run Playwright tests"
+          npm run test:ci
