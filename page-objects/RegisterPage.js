@@ -16,6 +16,8 @@ export class RegisterPage {
         await this.passwordInput.fill(password)
         await this.registerButton.waitFor()
         await this.registerButton.click()
+        // Wait for navigation to delivery details page after successful registration
+        await this.page.waitForURL(/\/delivery-details/, { timeout: 10000 })
 
     }
 }

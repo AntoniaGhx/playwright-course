@@ -32,11 +32,24 @@ export class DeliveryDetails {
     }
 
     fillDetails = async (userAddress) => {
+        // Wait for the first name input to be visible and enabled before filling
+        await this.firstNameInput.waitFor({ state: 'visible' })
+        await this.firstNameInput.waitFor({ state: 'attached' })
         await this.firstNameInput.fill(userAddress.firstName)
+        
+        await this.lastNameInput.waitFor({ state: 'visible' })
         await this.lastNameInput.fill(userAddress.lastName)
+        
+        await this.addressInput.waitFor({ state: 'visible' })
         await this.addressInput.fill(userAddress.address)
+        
+        await this.postcodeInput.waitFor({ state: 'visible' })
         await this.postcodeInput.fill(userAddress.postcode)
+        
+        await this.cityInput.waitFor({ state: 'visible' })
         await this.cityInput.fill(userAddress.city)
+        
+        await this.countryDropdown.waitFor({ state: 'visible' })
         await this.countryDropdown.selectOption({ label: userAddress.country })
         
     }

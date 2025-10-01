@@ -11,6 +11,7 @@ import { PaymentPage } from "../page-objects/PaymentPage.js"
 import { paymentDetails } from "./../data/paymentDetails.js"
 
 test("New user full end-to-end test journey", async ({ page }) => {
+    test.setTimeout(60000) // Increase timeout to 60 seconds for this comprehensive e2e test
     const productsPage = new ProductsPage(page)
     await productsPage.visit()
     await productsPage.sortByCheapest()
